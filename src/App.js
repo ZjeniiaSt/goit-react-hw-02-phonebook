@@ -1,43 +1,25 @@
 import React, { Component } from 'react';
-import './App.css';
-import ToDoList from './components/ToDoList';
+import PhoneForm from './components/PhoneForm';
+import PhoneList from './components/PhoneList';
+import shortid from 'shortid';
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: 'id-1',
-        text: 'Todo 1',
-        complited: false,
-      },
-      {
-        id: 'id-2',
-        text: 'Todo 2',
-        complited: false,
-      },
-      {
-        id: 'id-3',
-        text: 'Todo 3',
-        complited: false,
-      },
-    ],
+    contacts: [],
   };
-
-  deleteTodo = todoId => {
-    this.setState(prevState => ({ todos: prevState.todos.filter(todo => todo.id !== todoId) }));
+  formSubmitHandler = data => {
+    const { contacts } = this.state;
+    const addContact = { id: shortid.generate(), name: data.name, numder: data.numder };
+    this.setState({ contacts: [...contacts, addContact] });
   };
 
   render() {
-    const { todos } = this.state;
-    const completedTodos = todos.reduce((acc, todo) => (todo.complited ? acc + 1 : acc), 0);
     return (
-      <div>
-        <p>Загальна кількість:{todos.length}</p>
-        <p>Виконані: {completedTodos}</p>
-        <ToDoList todos={todos} onDeleteTodo={this.deleteTodo} />
-      </div>
+      <>
+        <PhoneForm onSubmit={this.formSubmitHandler}></PhoneForm>
+        <PhoneList contacts={this.state.contacts} />
+      </>
     );
   }
 }
-
 export default App;
