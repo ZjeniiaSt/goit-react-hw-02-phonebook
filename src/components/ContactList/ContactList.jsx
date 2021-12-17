@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
 import { BsTrashFill } from 'react-icons/bs';
+import { ContactsRoster, ContactsData, ContactNumber, ContactDelete } from './ContactList.styled';
 
 function ContactList({ contacts, onDelete }) {
   return (
-    <ul>
+    <ContactsRoster>
       {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name} : {contact.number}
-          <button type="button" onClick={() => onDelete(contact.id)}>
+        <ContactsData key={contact.id}>
+          <span>
+            {contact.name}: <ContactNumber>{contact.number}</ContactNumber>
+          </span>
+          <ContactDelete type="button" onClick={() => onDelete(contact.id)}>
             <BsTrashFill />
-          </button>
-        </li>
+          </ContactDelete>
+        </ContactsData>
       ))}
-    </ul>
+    </ContactsRoster>
   );
 }
 

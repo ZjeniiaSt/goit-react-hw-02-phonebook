@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import { BsSearch } from 'react-icons/bs';
+import { FilterInput, FilterLabel } from './Filter.styled';
 
 function Filter({ value, onChange }) {
   return (
-    <label>
-      Find contacts by name <BsSearch />
-      <input type="text" name="name" value={value} onChange={onChange}></input>
-    </label>
+    <FilterLabel>
+      <BsSearch /> Find contacts by name
+      <FilterInput type="text" name="name" value={value} onChange={onChange}></FilterInput>
+    </FilterLabel>
   );
 }
 

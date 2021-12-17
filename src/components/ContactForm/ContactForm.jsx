@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
 import { BsFillTelephoneFill } from 'react-icons/bs';
+import { Form, FormInput, FormLabel, AddButton } from './ContactForm.styled';
 
 class ContactForm extends Component {
   state = {
@@ -24,11 +25,10 @@ class ContactForm extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          <BsPersonCircle />
-          Name
-          <input
+      <Form onSubmit={this.handleSubmit}>
+        <FormLabel>
+          <BsPersonCircle /> Name
+          <FormInput
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -38,10 +38,10 @@ class ContactForm extends Component {
             value={this.state.name}
             id={this.nameInputId}
           />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           <BsFillTelephoneFill /> Number
-          <input
+          <FormInput
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -50,9 +50,9 @@ class ContactForm extends Component {
             onChange={this.handleChange}
             id={this.numberInputId}
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+        </FormLabel>
+        <AddButton type="submit">Add contact</AddButton>
+      </Form>
     );
   }
 }

@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+import Container from './components/Container';
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
@@ -48,9 +49,11 @@ class App extends Component {
     const visibleContacts = this.getFindContact();
     return (
       <>
-        <ContactForm onSubmit={this.formSubmitHandler}></ContactForm>
-        <Filter value={this.state.filter} onChange={this.changeFilter}></Filter>
-        <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />
+        <Container title="Phonebook">
+          <ContactForm onSubmit={this.formSubmitHandler}></ContactForm>
+          <Filter value={this.state.filter} onChange={this.changeFilter}></Filter>
+          <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />
+        </Container>
       </>
     );
   }
