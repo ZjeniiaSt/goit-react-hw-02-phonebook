@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ContainerStyle, ContainerTitle } from './Container.styled';
 
 function Container({ title, children }) {
@@ -9,3 +10,7 @@ function Container({ title, children }) {
 }
 
 export default Container;
+Container.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
+};

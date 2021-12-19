@@ -18,16 +18,17 @@ class App extends Component {
   };
   formSubmitHandler = data => {
     const { contacts } = this.state;
-    const addContact = { id: shortid.generate(), name: data.name, number: data.number };
+    const newContact = { id: shortid.generate(), name: data.name, number: data.number };
     if (
       contacts.find(
-        contact => contact.name === addContact.name || contact.number === addContact.number,
+        contact => contact.name === newContact.name || contact.number === newContact.number,
       )
     ) {
-      alert(`${addContact.name} is already in contacts!`);
-      return;
+      return alert(`${newContact.name} is already in contacts!`);
     }
-    this.setState({ contacts: [...contacts, addContact] });
+    this.setState(prevState => {
+      return { contacts: [...prevState.contacts, newContact] };
+    });
   };
 
   changeFilter = event => {

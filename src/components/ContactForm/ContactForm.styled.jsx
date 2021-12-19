@@ -20,6 +20,11 @@ export const FormInput = styled.input`
   margin-bottom: 20px;
   margin-top: 4px;
   border-radius: 8px;
+  &:-webkit-autofill {
+    -webkit-box-shadow: inset -100px -100px 0 rgb(28, 30, 33);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-background: rgb(28, 30, 33);
+  }
 `;
 
 export const FormLabel = styled.label`
