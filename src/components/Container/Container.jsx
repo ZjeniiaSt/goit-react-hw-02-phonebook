@@ -12,5 +12,5 @@ function Container({ title, children }) {
 export default Container;
 Container.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
 };

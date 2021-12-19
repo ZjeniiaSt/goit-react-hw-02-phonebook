@@ -37,7 +37,9 @@ class App extends Component {
 
   getFindContact = () => {
     const normalizedFilter = this.state.filter.toLowerCase();
-    return this.state.contacts.filter(contact => contact.name.includes(normalizedFilter));
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
   };
 
   deleteContact = id => {
